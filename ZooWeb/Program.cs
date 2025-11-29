@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ZooWeb.Components;
 using ZooWeb.Data;
 using ZooWeb.Services;
@@ -23,6 +23,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+// 🔽 OVO JE LINIJA KOJA JE NEDOSTAJALA
+app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();

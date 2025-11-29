@@ -1,0 +1,47 @@
+﻿@page "/nastambe"
+@using ZooWeb.Data
+@inject ZooWeb.Services.NastambaService NastambaService
+
+<h3>Nastambe</h3>
+
+@if (nastambe == null)
+{
+    <p>Učitavanje...</p>
+}
+else if (!nastambe.Any())
+{
+    <p>Nema nastambi u bazi.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Oznaka</th>
+                <th>Opis</th>
+                <th>Sjenčenje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var n in nastambe)
+            {
+                <tr>
+                    <td>@n.ID_nastambe</td>
+                    <td>@n.oznaka</td>
+                    <td>@n.opis</td>
+                    <td>@n.sjenčenje</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<Nastamba>? nastambe;
+
+    protected override async Task OnInitializedAsync()
+    {
+        nastambe = await NastambaService.GetAllAsync();
+    }
+}

@@ -1,0 +1,14 @@
+# Build artefakti
+bin/
+obj/
+
+# Visual Studio metadata
+.vs/
+*.user
+*.suo
+
+# Privatne postavke
+appsettings.json
+
+# Ostalo nebitno za repozitorij
+*.log
